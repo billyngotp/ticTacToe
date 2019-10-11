@@ -34,6 +34,8 @@ class Board extends Array{
         this.firPlayerToken = document.getElementById("player1").value;
         this.secPlayerToken = document.getElementById("player2").value;
         this.currentPlayer = this.firPlayerToken;
+        let curPlayer = document.getElementById("displayCurrentPlayer").innerText = "Current Player : " + this.currentPlayer;
+   
     }
     changeCurrentPlayer(){
 
@@ -48,8 +50,37 @@ class Board extends Array{
 
     checkWin(location){
         console.log(location);
-        //const halfWay = 
+        let winner = document.getElementById("message").innerText = this.currentPlayer + "is the winner!";
+        const halfWay = this.length/2;
+        const sumLocHalf = halfWay-location;
 
+        //Evaluate for even numbers
+        if(location %2 === 0){
+            //Check horizontal
+                //Check 4 and 6
+                if(Math.abs(sumLocHalf) === 1) {
+                    return
+                }
+                    
+            //Check Vertical
+
+        }
+
+        //evaluate for odd numbers
+        else if (location%2 === 1){
+            //Check Horizontal
+            return
+            //check Vertical
+
+            //Check Diagonal
+
+        }
+
+        //evaluate for 5
+        else{
+            return
+        }
+        console.log(halfWay);
     }
 }
 
@@ -68,8 +99,9 @@ for (let index = 1; index <=9; index++) {
             this.style.backgroundColor = "red";
         }
         this.innerText = gameBoard.currentPlayer;
-        gameBoard.changeCurrentPlayer();
         gameBoard.checkWin(index);
+        gameBoard.changeCurrentPlayer();
+        
 
     };
     console.log(gameBoard.currentPlayer)
