@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en"> 
+    <head>
+        <meta charset = "utf-8">
+        <title> Classic TicTacToe</title>
+        <link rel = "stylesheet" href = "ticTacToeLayout.css">
+        <h1> Welcome to Tic Tac Toe </h1>
+    </head>
+
+    <body>
+        <div id = "tokens"> 
+            <!-- Place Holder for now *add image searching for later* -->
+            <label> Please type in your tokens :</label>
+            <input type ="text" id="player1">
+            <input type = "text" id = "player2">
+            <button type="button" id = "beginGame" > Begin Game</button>
+ 
+        </div>
+
+
+        <div id = "board">
+            <div id = "displayCurrentPlayer">
+                Current Player : 
+            </div> 
+            <div id = "row1"> 
+                    <button type="button" class = "square" id = "1"> Click me! </button>
+                    <button type="button" class = "square" id = "2"> Click me! </button>
+                    <button type="button"  class = "square" id = "3"> Click me! </button>
+            </div>
+
+            <div id = "row2">
+                    <button type="button" class = "square" id = "4"> Click me! </button>
+                    <button type="button" class = "square" id = "5"> Click me! </button>
+                    <button type="button" class = "square" id = "6"> Click me! </button>
+            </div>
+
+            <div id = "row3">
+                    <button type="button" class = "square" id = "7"> Click me! </button>
+                    <button type="button" class = "square" id = "8"> Click me! </button>
+                    <button type="button" class = "square" id = "9"> Click me! </button>
+            </div>
+        </div>
+        <h2 id = "message" >Game Start!</h2>
+
+        <script src = "ticTacToe.js"> </script>
+    </body>
+
+</html> 
