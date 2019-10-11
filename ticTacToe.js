@@ -36,14 +36,20 @@ class Board extends Array{
         this.currentPlayer = this.firPlayerToken;
     }
     changeCurrentPlayer(){
+
         if (this.currentPlayer === this.firPlayerToken){
             this.currentPlayer = this.secPlayerToken;
         }
         else {
             this.currentPlayer = this.firPlayerToken;
         }
-        //let curPlayer = getElementById("displayCurrentPlayer");
-        console.log("curPlayer");
+        let curPlayer = document.getElementById("displayCurrentPlayer").innerText = "Current Player : " + this.currentPlayer;
+    }
+
+    checkWin(location){
+        console.log(location);
+        //const halfWay = 
+
     }
 }
 
@@ -63,7 +69,7 @@ for (let index = 1; index <=9; index++) {
         }
         this.innerText = gameBoard.currentPlayer;
         gameBoard.changeCurrentPlayer();
-
+        gameBoard.checkWin(index);
 
     };
     console.log(gameBoard.currentPlayer)
