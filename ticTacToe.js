@@ -15,6 +15,7 @@ class Board extends Array{
             this.push(index);
         }
     }
+
     displayBoard()
     {
         let currentBoard = "\n"
@@ -37,6 +38,7 @@ class Board extends Array{
         let curPlayer = document.getElementById("displayCurrentPlayer").innerText = "Current Player : " + this.currentPlayer;
    
     }
+    
     changeCurrentPlayer(){
 
         if (this.currentPlayer === this.firPlayerToken){
@@ -46,28 +48,42 @@ class Board extends Array{
             this.currentPlayer = this.firPlayerToken;
         }
         let curPlayer = document.getElementById("displayCurrentPlayer").innerText = "Current Player : " + this.currentPlayer;
+        this.displayMessage(this.currentPlayer + " you're up! Choose your spot");
     }
 
+    displayMessage(message) {
+        let changeMessage = document.getElementById("message").innerText = message;
+    }
     checkWin(location){
-        console.log(location);
-        let winner = document.getElementById("message").innerText = this.currentPlayer + "is the winner!";
-        const halfWay = this.length/2;
+        
+        const halfWay = Math.ceil(this.length/2);
         const sumLocHalf = halfWay-location;
-
+        //console.log(sumLocHalf + "and half way is " + halfWay);
+        let posiOfNum = Math.ceil(sumLocHalf+ location);
+        let winner = "";
         //Evaluate for even numbers
-        if(location %2 === 0){
+        if(location % 2 === 0){
             //Check horizontal
                 //Check 4 and 6
+                let testVar = this[location].innerText;
+
+                console.log("testvar is " + this[posiOfNum-1] + " " + this[posiOfNum] + " " + this[posiOfNum+1]);
                 if(Math.abs(sumLocHalf) === 1) {
-                    return
+                    this.hasWinner = true;
+                    if(this[posiOfNum-1] === this[posiOfNum] && this[posiOfNum] === this[posiOfNum+1]){
+                        this.displayMessage(this.currentPlayer + " is the winner!");
+                    }
+                }
+                else{
+                    
                 }
                     
             //Check Vertical
-
+        //console.log(this[location] + "is this location");
         }
 
         //evaluate for odd numbers
-        else if (location%2 === 1){
+        else if (location % 2 === 1){
             //Check Horizontal
             return
             //check Vertical
@@ -80,7 +96,6 @@ class Board extends Array{
         else{
             return
         }
-        console.log(halfWay);
     }
 }
 
@@ -93,18 +108,28 @@ let pieces = document.getElementById("1");
 for (let index = 1; index <=9; index++) {
     pieces = document.getElementById(index.toString());
     pieces.onclick= function(){
-        if(gameBoard.currentPlayer === gameBoard.firPlayerToken)
-            this.style.backgroundColor = "blue";
-        else{
-            this.style.backgroundColor = "red";
+        //prevent selection if already selected
+        if (this.innerText === gameBoard.firPlayerToken || this.innerText === gameBoard.secPlayerToken){
+            console.log("has an element already")
         }
-        this.innerText = gameBoard.currentPlayer;
-        gameBoard.checkWin(index);
-        gameBoard.changeCurrentPlayer();
+        else{
+            
+            if(gameBoard.currentPlayer === gameBoard.firPlayerToken) {
+                this.style.backgroundColor = "blue";    
+            }
+            else{
+                this.style.backgroundColor = "red";
+            }
+            this.innerText = gameBoard.currentPlayer;
+            gameBoard[index] = gameBoard.currentPlayer;
+            gameBoard.checkWin(index);
+            gameBoard.changeCurrentPlayer();
+            
+        }
         
 
     };
-    console.log(gameBoard.currentPlayer)
+    console.log(gameBoard.currentPlayer + "is current player")
 }
 
 //make the on click event for player tokens

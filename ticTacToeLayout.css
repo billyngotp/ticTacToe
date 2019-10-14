@@ -2,7 +2,7 @@ body{
     text-align: center;
 }
 
-button{
+.square{
     height: 10em;
     position: relative;
     width: 10em;
