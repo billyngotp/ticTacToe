@@ -8,7 +8,20 @@ body{
     width: 10em;
 }
 
-#beginGame{
-    height: 5em;
-    width 5em;
+button{
+    position: absolute;
+    align-items: center;
 }
+
+#beginGame{
+    position: relative;
+    height: 3em;
+    width: 7em;
+}
+
+#displayCurrentPlayer{
+    position: absolute;
+    left: 2em;
+    max-width: 15%;
+}
+
